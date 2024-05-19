@@ -1,6 +1,25 @@
 .navBar{
   width: 100%;
-  height: 50px;
+  height: 70px;
   display: flex;
-  
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #4E5770, #213D84);
+}
+
+.menuIcon{
+  font-size: 2.5rem;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.navBar h1{
+  font-weight: bold;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.icon{
+  width: 46px;
+  margin-right: 10px;
 }
