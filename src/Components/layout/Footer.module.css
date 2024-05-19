@@ -1,0 +1,13 @@
+.footer{
+  height: 10vh;
+  background: linear-gradient(to right, #4E5770, #213D84);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.footer p{
+  font-weight: bold;
+  font-size: 1.1rem;
+}
