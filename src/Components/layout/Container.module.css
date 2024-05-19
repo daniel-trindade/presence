@@ -1,6 +1,7 @@
 .container{
   height: 80vh;
   width: 100%;
-  background-color: rgb(175, 173, 177);
+  background-color: rgb(238, 237, 240);
   color: black;
+  display: block;
 }
