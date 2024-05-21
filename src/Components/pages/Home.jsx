@@ -4,7 +4,7 @@ import Button from "../layout/Button"
 
 function Home(){
   return(
-    <div>
+    <div className={styles.gridContainer}>
      <Button 
         img="checkList"
         tag="Lançar ausencias"
@@ -23,7 +23,7 @@ function Home(){
       <Button 
         text="180"
         tag="Frequência Total"
-        link="www.google.com"
+        link="/login"
       />
     </div>
   )

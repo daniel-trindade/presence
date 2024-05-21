@@ -1,0 +1,10 @@
+.gridContainer{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20%;
+}
