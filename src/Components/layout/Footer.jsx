@@ -3,7 +3,7 @@ import styles from "./Footer.module.css"
 function Footer(){
   return(
     <div className={styles.footer}>
-      <p>Trindade &copy; 2024</p>
+      <a href="https://portfolio-kappa-lake-89.vercel.app/">Trindade &copy; 2024</a> 
     </div>
   )
 }
