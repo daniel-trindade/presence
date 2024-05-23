@@ -7,6 +7,10 @@
   background: linear-gradient(to right, #4E5770, #213D84);
 }
 
+.navBar a{
+  text-decoration: none;
+}
+
 .menuIcon{
   font-size: 2.5rem;
   color: #fff;

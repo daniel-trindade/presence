@@ -2,8 +2,6 @@ import styles from "./Login.module.css"
 import { useState } from "react"
 import { FaUser, FaLock } from "react-icons/fa"
 
-import Button from "../layout/Button"
-
 function Login(){
 
   const [userName, setUserName] = useState("")
@@ -32,6 +30,7 @@ function Login(){
           onChange={(e) => setPassword(e.target.value)}
         />
         <input type="submit" value="Entrar" className={styles.enterButton}/>
+        <p>Não possui Login? <a href="/signup">Registre-se</a></p>
       </form>
       
     </div>

@@ -6,7 +6,7 @@ function NavBar(){
   return(
     <nav className={styles.navBar}>
       <TiThMenu className={styles.menuIcon}/>
-      <h1>Presence</h1>
+      <a href="/home"><h1>Presence</h1></a>
       <img src={presenceIcon} alt="Presence Icon" className={styles.icon}/>
     </nav>
   )
