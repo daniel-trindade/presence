@@ -6,14 +6,19 @@ import Signup from '../Components/pages/Signup';
 import Login from '../Components/pages/Login';
 
 function Paths(){
-
+  
   const Private = ({Item}) => {
+
     const signed = false;
 
     if(signed !== true){
+      console.log("User não logado")
       return Item = <Login/>
+      
     }else{
+      console.log("User não logado")
       return Item = <Home/>
+      
     }
   }
 

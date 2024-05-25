@@ -1,0 +1,16 @@
+{
+  "users":[
+    {
+      "id":"1",
+      "name": "Daniel Bruno Trindade da Silva",
+      "login": "trindade",
+      "password": "326435db"
+    },
+    {
+      "id": "2",
+      "name": "Lanuzia Santos do Nascimento Silva",
+      "login": "lenuziasn",
+      "password": "meuamor" 
+    }
+  ]
+}
