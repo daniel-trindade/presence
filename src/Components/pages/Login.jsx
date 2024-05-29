@@ -21,14 +21,22 @@ function Login(){
     error,
   ] = useSignInWithEmailAndPassword(auth);
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
-    signInWithEmailAndPassword(email, password)
-    console.log(user)
+    try{
+      const { user } = await signInWithEmailAndPassword(email, password)
+      console.log(user)
+    }catch(error){
+      console.error(error)
+    }  
+  }
+
+  const helloBody = () =>{
+    console.log(user.email)
   }
   
   if(user){
-    return <p>{user.email} hello</p>
+    return <div><p>hello</p> <button onClick={helloBody} >reveal</button></div>
   }
   if(loading){
     return <p>Carregando...</p>
