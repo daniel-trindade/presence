@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
+import { useState } from 'react';
+
 //Pages
 import Home from '../Components/pages/Home';
 import Signup from '../Components/pages/Signup';
@@ -9,7 +11,7 @@ function Paths(){
   
   const Private = ({Item}) => {
 
-    const signed = false;
+    const [signed, setSigned] = useState(false);
 
     if(signed !== true){
       console.log("User não logado")
