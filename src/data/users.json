@@ -8,9 +8,15 @@
     },
     {
       "id": "2",
-      "name": "Lanuzia Santos do Nascimento Silva",
+      "name": "Lenuzia Santos do Nascimento Silva",
       "login": "lenuziasn",
       "password": "meuamor" 
+    },
+    {
+      "id": "3",
+      "name": "Daniel Nascimento da Silva",
+      "login": "danielns",
+      "password": "654321" 
     }
   ]
 }

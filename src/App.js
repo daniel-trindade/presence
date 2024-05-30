@@ -11,9 +11,9 @@ function App() {
   return (
     <>
       <NavBar/>
-      <Container>
-        <Paths/>
-      </Container>
+        <Container>
+          <Paths/>
+        </Container>
       <Footer/>
     </>
   );
