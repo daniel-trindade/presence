@@ -11,7 +11,7 @@ function Paths(){
   
   const Private = ({Item}) => {
 
-    const [signed, setSigned] = useState(false);
+    const [signed, setSigned] = useState(true);
 
     if(signed !== true){
       console.log("User não logado")
