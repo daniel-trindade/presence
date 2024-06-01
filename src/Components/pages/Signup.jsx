@@ -1,6 +1,7 @@
 import styles from "./Signup.module.css"
 import { useState } from "react"
 import { FaCaretLeft } from "react-icons/fa6"
+import { FaChildReaching } from "react-icons/fa6";
 
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
@@ -42,10 +43,13 @@ function Signup(){
   }
   if(signed){
     return (
-      <>
-        <h1>Conta Criada Com Sucesso</h1>
-        <a href="/login">voltar</a>
-      </>
+      <div className={styles.signupContainer}>
+        <div className={`${styles.signupForm} ${styles.centralize}`}>
+          <FaChildReaching className={styles.toyIcon}/>
+          <h1>Cadastro Realizado com Sucesso</h1>
+          <a href="/login"><FaCaretLeft /> Voltar</a>
+        </div>
+      </div>
     )
   }
   return(

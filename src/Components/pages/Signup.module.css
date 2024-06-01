@@ -31,7 +31,7 @@
 }
 
 .signupContainer a{
-  font-size: .8rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #213D84;
   margin-top: 20px;
@@ -69,4 +69,14 @@
   color: #fff;
   font-size: 1.2rem;
   font-weight: 400;
+}
+
+.centralize{
+  text-align: center;
+  align-items: center;
+}
+
+.toyIcon{
+  color: #213D84;
+  font-size: 4rem;
 }
