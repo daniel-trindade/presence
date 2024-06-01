@@ -1,29 +1,28 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import { useState } from 'react';
-
 //Pages
 import Home from '../Components/pages/Home';
 import Signup from '../Components/pages/Signup';
 import Login from '../Components/pages/Login';
 
+
+
+function Private({ Item }) {
+
+  const tokken = localStorage.getItem("firebase_id_token")
+
+  if(tokken){
+    console.log("tokken autenticado")
+    return <Home/>
+  }else{
+    console.log("Não autenticado. Redirecionado")
+    return <Login/>
+  }
+  
+}
+
 function Paths(){
   
-  const Private = ({Item}) => {
-
-    const [signed, setSigned] = useState(true);
-
-    if(signed !== true){
-      console.log("User não logado")
-      return Item = <Login/>
-      
-    }else{
-      console.log("User não logado")
-      return Item = <Home/>
-      
-    }
-  }
-
   return(
     <>
       <Router>
@@ -40,5 +39,3 @@ function Paths(){
 }
 
 export default Paths
-
-      

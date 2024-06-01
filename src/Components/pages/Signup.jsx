@@ -4,7 +4,7 @@ import { FaCaretLeft } from "react-icons/fa6"
 
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
-import { auth } from "../../Config";
+import { auth } from "../../App";
 
 function Signup(){
 
@@ -12,6 +12,7 @@ function Signup(){
   const [password, setPassword] = useState("")
   const [verifyPassword, setVerifyPassword] = useState("")
   const [accessKey, setAccessKey] = useState("")
+  const [signed, setSigned] = useState(false)
 
   const [
     createUserWithEmailAndPassword,
@@ -26,18 +27,26 @@ function Signup(){
     if(password===verifyPassword){
       if(accessKey === "rosa01"){
         createUserWithEmailAndPassword(email, password)
-        console.log("registro criado com sucesso!")
+        setSigned(true)
       }else{
-        console.log("token Errado")
+        alert("token Errado")
       }
     }else{
-      console.log("senhas não conferem")
+      alert("senhas não conferem")
     }
     
   }
   
   if(loading){
     return <p>Carregando...</p>
+  }
+  if(signed){
+    return (
+      <>
+        <h1>Conta Criada Com Sucesso</h1>
+        <a href="/login">voltar</a>
+      </>
+    )
   }
   return(
     <div className={styles.signupContainer}>

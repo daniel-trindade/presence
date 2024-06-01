@@ -6,13 +6,12 @@ import { FaUser, FaLock } from "react-icons/fa"
 
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'; 
 
-import { auth } from "../../Config";
+import { auth } from "../../App";
 
 function Login(){
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [currentUser, setCurrenUser] = useState([])
 
   const [
     signInWithEmailAndPassword,
@@ -24,20 +23,16 @@ function Login(){
   const handleSubmit = async (e) =>{
     e.preventDefault();
     try{
+      
       const { user } = await signInWithEmailAndPassword(email, password)
-      console.log(user)
+      localStorage.setItem('firebase_id_token', user.uid);
+      window.location.href = "/home"
+
     }catch(error){
       console.error(error)
     }  
   }
 
-  const helloBody = () =>{
-    console.log(user.email)
-  }
-  
-  if(user){
-    return <div><p>hello</p> <button onClick={helloBody} >reveal</button></div>
-  }
   if(loading){
     return <p>Carregando...</p>
   }
