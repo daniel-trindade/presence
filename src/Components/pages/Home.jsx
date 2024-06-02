@@ -18,7 +18,7 @@ function Home(){
      <Button 
         img="checkList"
         tag="Lançar ausencias"
-        link="www.google.com"
+        link="/list"
       />
       <Button 
         img="searchImg"
