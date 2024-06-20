@@ -5,7 +5,7 @@ import { FaChildReaching } from "react-icons/fa6";
 
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
-import { auth } from "../../App";
+import { auth } from "../../firebaseConfig";
 
 function Signup(){
 

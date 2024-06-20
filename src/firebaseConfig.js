@@ -1,11 +1,3 @@
-import './App.css';
-
-import NavBar from './Components/layout/NavBar';
-import Footer from './Components/layout/Footer';
-import Container from './Components/layout/Container';
-import Paths from './routes/Paths';
-
-/*
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 
@@ -22,21 +14,3 @@ export const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-
-
-*/
-
-function App() {
-
-  return (
-    <>
-      <NavBar/>
-        <Container>
-          <Paths/>
-        </Container>
-      <Footer/>
-    </>
-  );
-}
-
-export default App;

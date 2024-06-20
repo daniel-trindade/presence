@@ -6,7 +6,8 @@ import { FaUser, FaLock } from "react-icons/fa"
 
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'; 
 
-import { auth } from "../../App";
+import { auth } from "../../firebaseConfig";
+
 
 function Login(){
 
