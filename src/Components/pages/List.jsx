@@ -30,7 +30,6 @@ function List(){
           </li>
         ) )}
       </ul>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam sapiente dolor officiis asperiores, quo doloribus laborum maiores laudantium earum enim nemo eius veritatis nam, nobis temporibus, esse ducimus architecto ab?</p>
     </div>
   )
 
