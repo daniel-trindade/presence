@@ -22,7 +22,7 @@ function List(){
   return(
     <div className={styles.listContainer}>
       <h1>List</h1>
-      <button onClick={fechData}>lançar frequencia now</button>
+      <button onClick={fechData}>Lançar Frequencia</button>
       <ul>
         {membersList.map( (member, index) =>(
           <li key={index}>
