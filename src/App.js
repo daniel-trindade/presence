@@ -8,13 +8,15 @@ import Paths from './routes/Paths';
 function App() {
 
   return (
-    <>
+    <div className="app-wrapper">
       <NavBar/>
-      <Container>
-        <Paths/>
-      </Container>
+      <div className="content-wrapper">
+        <Container>
+          <Paths/>
+        </Container>
+      </div>
       <Footer/>
-    </>
+    </div>
   );
 }
 

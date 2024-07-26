@@ -1,4 +1,15 @@
-h1{
+.header{
+  display:  flex;
+  align-items: end;
+}
+
+.header a{
+ text-decoration: none;
+ color: #213D84; padding: 1.5em .5em;
+ font-weight: 400;
+}
+
+.header h1{
   color: #213D84;
   font-weight: 400;
   padding: .5em;

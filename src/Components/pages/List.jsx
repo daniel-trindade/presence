@@ -1,6 +1,7 @@
 import { useState, useEffect} from "react"
 import { app } from "../../firebaseConfig"
 import { getDatabase, ref, onValue} from "firebase/database"
+import { FaCaretLeft } from "react-icons/fa6"
 
 import styles from "./List.module.css"
 import StandardButton from "../layout/StandardButton"
@@ -35,7 +36,10 @@ function List(){
 
   return(
     <div className={styles.listContainer}>
-      <h1>Lançar Frequência</h1>
+      <div className={styles.header}>
+        <h1>Lançar Frequência</h1>
+        <a href="/home"><FaCaretLeft /> Voltar</a>
+      </div>
       <div className={styles.inputs}>
         <input className={styles.date} type="date" name="date" id="date" value={currentDate}/>
         <StandardButton text="Lançar Frequencia" fatherFunction={fetchData}/>
