@@ -1,5 +1,9 @@
 .footer{
   height: 10vh;
+  width: 100%;
+  position: fixed;
+  bottom: 60px;
+  right: 00px;
   background: linear-gradient(to right, #4E5770, #213D84);
   display: flex;
   align-items: center;

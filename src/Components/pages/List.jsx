@@ -8,30 +8,33 @@ import StandardButton from "../layout/StandardButton"
 
 function List(){
 
-  let ggList = [{id: "01", name: "Daniel Trindade"},
-                {id: "02", name: "Lenuzia Trindade"},
-                {id: "03", name: "Leniel Trindade"},
-                {id: "04", name: "Linda Trindade"}
-                ]
-
-  const [membersList, setMenberList] = useState([])
+  const [membersList, setMembersList] = useState([])
   const [currentDate, setCurrentDate] = useState()
 
-  useEffect(() => {
+
+  //SETA A DATA PARA INPUT DATE
+  useEffect(() => { 
     const today = new Date();
     const formattedDate = today.toISOString().split('T')[0]
     setCurrentDate(formattedDate)
   }, [])
 
-  const fetchData = async () => {
+
+  //BUSCA LISTA NO BANCO E PREPARA PARA RENDERIZAR
+  const fetchData = async () => { 
     const db = getDatabase(app);
     const dbRef = ref(db, 'Presence/');
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
-      setMenberList(data)
+      setMembersList(data)
+      console.log("feito")
     });
   }
 
+  //CHAMA A FUNÇÃO PARA RENDERIZAR A LISTA
+  useEffect(() => {  
+    fetchData();
+  }, []);
 
 
   return(
@@ -42,7 +45,7 @@ function List(){
       </div>
       <div className={styles.inputs}>
         <input className={styles.date} type="date" name="date" id="date" value={currentDate}/>
-        <StandardButton text="Lançar Frequencia" fatherFunction={fetchData}/>
+        <StandardButton text="Lançar Frequencia"/>
       </div>
       
 
