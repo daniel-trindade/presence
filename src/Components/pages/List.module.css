@@ -1,0 +1,11 @@
+h1{
+  color: #213D84;
+  font-weight: 400;
+}
+
+.inputs{
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

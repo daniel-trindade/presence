@@ -1,0 +1,7 @@
+.button{
+  padding: .2em;
+  background: linear-gradient(to right, #4E5770, #213D84);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+}

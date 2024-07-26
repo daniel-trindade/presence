@@ -3,12 +3,26 @@ import { app } from "../../firebaseConfig"
 import { getDatabase, ref, onValue} from "firebase/database"
 
 import styles from "./List.module.css"
+import StandardButton from "../layout/StandardButton"
 
 function List(){
 
-  let [membersList, setMenberList] = useState([])
+  let ggList = [{id: "01", name: "Daniel Trindade"},
+                {id: "02", name: "Lenuzia Trindade"},
+                {id: "03", name: "Leniel Trindade"},
+                {id: "04", name: "Linda Trindade"}
+                ]
 
-  const fechData = async () => {
+  const [membersList, setMenberList] = useState([])
+  const [currentDate, setCurrentDate] = useState()
+
+  useEffect(() => {
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0]
+    setCurrentDate(formattedDate)
+  }, [])
+
+  const fetchData = async () => {
     const db = getDatabase(app);
     const dbRef = ref(db, 'Presence/');
     onValue(dbRef, (snapshot) => {
@@ -21,19 +35,20 @@ function List(){
 
   return(
     <div className={styles.listContainer}>
-      <h1>List</h1>
-      <button onClick={fechData}>Lançar Frequencia</button>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore officia, eum iste neque, ducimus modi vel culpa animi, architecto reprehenderit sint nam ut. Illo praesentium esse veritatis ullam, excepturi earum.</p>
-     
+      <h1>Lançar Frequência</h1>
+      <div className={styles.inputs}>
+        <input type="date" name="date" id="date" value={currentDate}/>
+        <StandardButton text="Lançar Frequencia" fatherFunction={fetchData}/>
+      </div>
+      
 
-
-      {/* <ul>
-        {membersList.map((member, index) =>(
+      <ul>
+        {ggList.map((member, index) =>(
           <li key={index}>
             {member.id} - {member.name}
           </li>
         ) )}
-      </ul> */}
+      </ul>
       
 
     </div>
