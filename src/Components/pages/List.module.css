@@ -38,6 +38,17 @@
 }
 
 .list li{
+  display: flex;
+}
+
+.list li input{
+  width: 1.5em;
+  margin-left: .5em;
+  border: 1px solid #213D84;
+
+}
+
+.list li p{
   color: #213D84;
   font-weight: 400;
   padding: 0 1em;

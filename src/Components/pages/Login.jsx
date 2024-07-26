@@ -16,9 +16,7 @@ function Login(){
 
   const [
     signInWithEmailAndPassword,
-    user,
     loading,
-    error,
   ] = useSignInWithEmailAndPassword(auth);
 
   const handleSubmit = async (e) =>{
@@ -26,7 +24,7 @@ function Login(){
     try{
       
       const { user } = await signInWithEmailAndPassword(email, password)
-      localStorage.setItem('firebase_id_token', user.uid);
+      sessionStorage.setItem('firebase_id_token', user.uid);
       window.location.href = "/home"
 
     }catch(error){

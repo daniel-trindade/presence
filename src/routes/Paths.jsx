@@ -10,7 +10,7 @@ import List from '../Components/pages/List';
 
 function Private({ Item }) {
 
-  const tokken = true //localStorage.getItem("firebase_id_token")
+  const tokken = sessionStorage.getItem("firebase_id_token")
 
   if(tokken){
     console.log("tokken autenticado")

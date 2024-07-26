@@ -52,7 +52,7 @@ function List(){
       <ul className={styles.list}>
         {membersList.map((member) =>(
           <li key={member.id}>
-            <input type="checkbox" name="present" id="present" /> {member.name}
+            <input type="checkbox" name={"presence"+member.id} id={"presence"+member.id} /> <p>{member.name}</p>
           </li>
         ) )}
       </ul>

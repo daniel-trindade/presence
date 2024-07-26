@@ -7,7 +7,7 @@ import Button from "../layout/Button"
 function Home(){
 
   function getOut(){
-    localStorage.removeItem("firebase_id_token")
+    sessionStorage.removeItem("firebase_id_token")
     document.location.href="/login"
   }
 
@@ -23,17 +23,17 @@ function Home(){
       <Button 
         img="searchImg"
         tag="Buscar por Nome"
-        link="www.google.com"
+        link="/home"
       />
       <Button 
         img="pizzaGraf"
         tag="Relatório Gerais"
-        link="www.google.com"
+        link="/home"
       />
       <Button 
         text="180"
         tag="Frequência Total"
-        link="/login"
+        link="/home"
       />
 
       <button onClick={getOut}> Sair </button>
