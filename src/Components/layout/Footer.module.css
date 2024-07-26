@@ -2,7 +2,7 @@
   height: 10vh;
   width: 100%;
   position: fixed;
-  bottom: 0px;
+  bottom: 60px;
   right: 0px;
   background: linear-gradient(to right, #4E5770, #213D84);
   display: flex;
