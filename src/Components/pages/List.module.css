@@ -1,6 +1,7 @@
 h1{
   color: #213D84;
   font-weight: 400;
+  padding: .5em;
 }
 
 .inputs{
@@ -8,4 +9,24 @@ h1{
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.date{
+  height: 2.3em;
+  color: #213D84;
+  font-weight: 300;
+  border: 1px solid #213D84;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.list{
+  margin-top: 1em;
+}
+
+.list li{
+  color: #213D84;
+  font-weight: 400;
+  padding: 0 1em;
+
 }

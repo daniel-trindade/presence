@@ -37,15 +37,15 @@ function List(){
     <div className={styles.listContainer}>
       <h1>Lançar Frequência</h1>
       <div className={styles.inputs}>
-        <input type="date" name="date" id="date" value={currentDate}/>
+        <input className={styles.date} type="date" name="date" id="date" value={currentDate}/>
         <StandardButton text="Lançar Frequencia" fatherFunction={fetchData}/>
       </div>
       
 
-      <ul>
-        {ggList.map((member, index) =>(
-          <li key={index}>
-            {member.id} - {member.name}
+      <ul className={styles.list}>
+        {membersList.map((member) =>(
+          <li key={member.id}>
+            <input type="checkbox" name="present" id="present" /> {member.name}
           </li>
         ) )}
       </ul>
