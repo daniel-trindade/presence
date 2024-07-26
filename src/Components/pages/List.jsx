@@ -12,7 +12,7 @@ function List(){
   const [currentDate, setCurrentDate] = useState()
 
 
-  //SETA A DATA PARA INPUT DATE
+  //SET PARA A DATA DO INPUT DATE
   useEffect(() => { 
     const today = new Date();
     const formattedDate = today.toISOString().split('T')[0]
