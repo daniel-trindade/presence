@@ -4,9 +4,10 @@
 }
 
 .header a{
- text-decoration: none;
- color: #213D84; padding: 1.5em .5em;
- font-weight: 400;
+  width: 6em;
+  text-decoration: none;
+  color: #213D84; padding: 1.5em .5em;
+  font-weight: 400;
 }
 
 .header h1{
