@@ -1,0 +1,36 @@
+.menagerContainer{
+  padding: 1em;
+}
+
+.menagerContainer h1{
+  padding: .5em;
+}
+
+.buttonsContainer{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 3em;
+  border-bottom: 3px dotted #213D84;
+}
+
+/* NEW REGISTER */
+
+.newReg{
+  width: 100%;
+  height: 20em;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  padding: 1em;
+}
+
+.newReg label{
+  font-size: 1.5em;
+}
+
+.newReg input{
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  border: 1px solid #213D84;
+}

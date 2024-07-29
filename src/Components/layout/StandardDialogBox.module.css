@@ -1,0 +1,12 @@
+dialog.Container{
+  margin: 1em;
+}
+
+.box{
+  width: 180px;
+  height: 40px;
+  border: 1px solid #213D84;
+  color: #213D84;
+  font-weight: 300;
+  text-align: center;
+}
