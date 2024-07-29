@@ -26,10 +26,12 @@ const Menager = () => {
         <div className={styles.newReg}>
           <label htmlFor="name">Nome completo</label>
           <input type="text" placeholder="Último nome, Prenome Sobrenome"/>
-          <StandardButton
-          text="Cadastrar"
-          width="10"
-        />
+          <div className={styles.buttonContainer}>
+            <StandardButton
+            text="Cadastrar"
+            width="10"
+            />
+          </div>
 
         </div>
       ) : show === "editRegister" ? (
