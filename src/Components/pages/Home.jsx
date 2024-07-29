@@ -23,7 +23,7 @@ function Home(){
       <Button 
         img="searchImg"
         tag="Buscar por Nome"
-        link="/home"
+        link="/menager"
       />
       <Button 
         img="pizzaGraf"

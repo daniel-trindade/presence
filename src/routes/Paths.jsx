@@ -5,6 +5,7 @@ import Home from '../Components/pages/Home';
 import Signup from '../Components/pages/Signup';
 import Login from '../Components/pages/Login';
 import List from '../Components/pages/List';
+import Menager from '../Components/pages/Menager';
 
 
 
@@ -32,6 +33,7 @@ function Paths(){
           <Route path='*' element={<Login/>}/>
           <Route exact path='/home' element={<Private Item={Home}/>}/>
           <Route exact path='/list' element={<Private Item={List}/>}/>
+          <Route exact path='/menager' element={<Private Item={Menager}/>}/>
           <Route path='/signup' element={<Signup/>}/>
         </Routes>
       </Router>
