@@ -23,6 +23,7 @@ const Menager = () => {
       </div>
 
       {show === "newRegister" ? (
+
         <div className={styles.newReg}>
           <label htmlFor="name">Nome completo</label>
           <input type="text" placeholder="Último nome, Prenome Sobrenome"/>
@@ -32,10 +33,28 @@ const Menager = () => {
             width="10"
             />
           </div>
-
         </div>
+
       ) : show === "editRegister" ? (
-        <p>Edit Register</p>
+
+        <div className={styles.newReg}>
+        <label htmlFor="name">Nome</label>
+        <input type="text" placeholder="Digite um nome"/>
+        <div className={styles.buttonContainer}>
+          <StandardButton
+          text="Buscar"
+          width="10"
+          />
+        </div>
+        <label htmlFor="newName">Novo Nome</label>
+        <input type="text" placeholder="xxx"/>
+        <div className={styles.buttonContainer}>
+          <StandardButton
+          text="Alterar"
+          width="10"
+          />
+        </div>
+      </div>
       ) : (
         <>
         </>
