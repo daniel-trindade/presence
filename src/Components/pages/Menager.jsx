@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 import { app } from "../../firebaseConfig";
 
 import styles from "./Menager.module.css";
@@ -64,12 +64,20 @@ const Menager = () => {
         <StandardButton
           text="Novo Cadastro"
           width="10"
-          fatherFunction={() => setShow("newRegister")}
+          fatherFunction={() => {
+            setShow("newRegister");
+            setName("");
+          }}
         />
         <StandardButton
           text="Editar Nome"
           width="10"
-          fatherFunction={() => setShow("editRegister")}
+          fatherFunction={() => {
+            setShow("editRegister");
+            setName("");
+            setSearchList(false);
+            setNewName("");
+          }}
         />
       </div>
 
@@ -107,7 +115,13 @@ const Menager = () => {
             <ul className={styles.list}>
               {personList.map((person) => (
                 <li key={person.id}>
-                  <button onClick={()=>{setNewName(person.name)}}>{person.name}</button>
+                  <button
+                    onClick={() => {
+                      setNewName(person.name);
+                    }}
+                  >
+                    {person.name}
+                  </button>
                 </li>
               ))}
             </ul>
