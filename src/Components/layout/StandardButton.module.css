@@ -6,6 +6,10 @@
   font-weight: 400;
 }
 
+.width-5 {
+  width: 5em;
+}
+
 .width-10 {
   width: 10em;
 }

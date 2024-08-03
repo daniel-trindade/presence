@@ -1,7 +1,13 @@
 import styles from "./DeleteRegister.module.css"
 import StandardButton from "../layout/StandardButton";
+import { useState } from "react";
 
 const DeleteRegister = ({func1, func2, func3, arr, newName, list}) => {
+
+
+  const [showDelConf, setShowDelConf] = useState(false)
+  const [pName, setPName] = useState("")
+
   return (
     <div className={styles.newReg}>
       <label htmlFor="name">Nome</label>
@@ -19,7 +25,11 @@ const DeleteRegister = ({func1, func2, func3, arr, newName, list}) => {
             <li key={person.id}>
               <button
                 onClick={() => {
-                  func2(person.name);
+                  setPName(person.name)
+                  if(pName){
+                    setShowDelConf(true)
+                  }
+                  func2(person.name, person.id);
                 }}
               >
                 {person.name}
@@ -38,6 +48,32 @@ const DeleteRegister = ({func1, func2, func3, arr, newName, list}) => {
           fatherFunction={func3}
         />
       </div>
+
+      {showDelConf ? (
+        <>
+          <h2>Você deseja apagar o registro de:</h2>
+          <div className={styles.confContainer}>
+            <p>{pName}</p>
+          
+            <div className={styles.btnContainer}>
+              <StandardButton
+                text="Sim"
+                width="5"
+              />
+              <StandardButton
+                text="Não"
+                width="5"
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+        </>
+      )}
+
+
+
     </div>
   )
 }
