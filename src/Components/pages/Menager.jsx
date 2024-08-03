@@ -118,10 +118,8 @@ const Menager = () => {
         <>
           <DeleteRegister
             func1={setName}
-            func2={setNewName}
-            func3={searchName}
+            func2={searchName}
             arr={personList}
-            newName={newName}
             list={searchList}
           />
         </>

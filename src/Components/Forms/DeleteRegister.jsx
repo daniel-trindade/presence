@@ -2,11 +2,16 @@ import styles from "./DeleteRegister.module.css"
 import StandardButton from "../layout/StandardButton";
 import { useState } from "react";
 
-const DeleteRegister = ({func1, func2, func3, arr, newName, list}) => {
+const DeleteRegister = ({func1, func2, arr, list}) => {
 
 
   const [showDelConf, setShowDelConf] = useState(false)
   const [pName, setPName] = useState("")
+
+  const negative = () =>{
+    setPName("")
+    setShowDelConf(false)
+  }
 
   return (
     <div className={styles.newReg}>
@@ -29,7 +34,6 @@ const DeleteRegister = ({func1, func2, func3, arr, newName, list}) => {
                   if(pName){
                     setShowDelConf(true)
                   }
-                  func2(person.name, person.id);
                 }}
               >
                 {person.name}
@@ -45,7 +49,7 @@ const DeleteRegister = ({func1, func2, func3, arr, newName, list}) => {
         <StandardButton
           text="Buscar"
           width="10"
-          fatherFunction={func3}
+          fatherFunction={func2}
         />
       </div>
 
@@ -63,6 +67,7 @@ const DeleteRegister = ({func1, func2, func3, arr, newName, list}) => {
               <StandardButton
                 text="Não"
                 width="5"
+                fatherFunction={negative}
               />
             </div>
           </div>
