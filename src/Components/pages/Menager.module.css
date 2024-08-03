@@ -1,5 +1,6 @@
 .menagerContainer{
   padding: 1em;
+  margin-bottom: 200em;
 }
 
 .menagerContainer h1{
@@ -42,4 +43,31 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 2em;
+}
+
+.list {
+  min-height: 100px; /* Altura máxima para a lista */
+  overflow-y: auto; /* Habilita a rolagem vertical */
+  background-color: #fff;
+  padding: 0;
+  margin-top: -1em;
+  margin-bottom: 1em;
+  list-style-type: none; /* Remove os marcadores da lista */
+}
+
+.list li {
+  padding: 10px; /* Espaçamento interno dos itens */
+  cursor: pointer; /* Muda o cursor quando sobre um item */
+}
+
+.list li button {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.list li:hover {
+  background-color: #f0f0f0; /* Destaca o item ao passar o mouse */
 }
