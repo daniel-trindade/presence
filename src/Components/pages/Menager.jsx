@@ -4,6 +4,9 @@ import { app } from "../../firebaseConfig";
 
 import styles from "./Menager.module.css";
 import StandardButton from "../layout/StandardButton";
+import NewRegister from "../Forms/NewRegister";
+import EditRegister from "../Forms/EditRegister";
+import DeleteRegister from "../Forms/DeleteRegister";
 
 const Menager = () => {
   const [show, setShow] = useState("");
@@ -79,77 +82,52 @@ const Menager = () => {
             setNewName("");
           }}
         />
+
+        <StandardButton
+          text="Excluir"
+          width="10"
+          fatherFunction={() => {
+            setShow("deleteRegister");
+            setName("");
+            setSearchList(false);
+            setNewName("");
+          }}
+        />
       </div>
 
       {show === "newRegister" ? (
-        <div className={styles.newReg}>
-          <label htmlFor="name">Nome completo</label>
-          <input
-            type="text"
-            placeholder="Último nome, Prenome Sobrenome"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
+        <>
+        
+          <NewRegister 
+          func1={setName} 
+          func2={newPerson} 
+          name={name} 
           />
-          <div className={styles.buttonContainer}>
-            <StandardButton
-              text="Cadastrar"
-              width="10"
-              fatherFunction={newPerson}
-            />
-          </div>
-        </div>
+        </>
       ) : show === "editRegister" ? (
-        <div className={styles.newReg}>
-          <label htmlFor="name">Nome</label>
-          <input
-            type="text"
-            placeholder="Digite um nome"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
+        <EditRegister
+          func1={setName}
+          func2={setNewName}
+          func3={searchName}
+          arr={personList}
+          newName={newName}
+          list={searchList}
+        />
+        
+      ) : show === "deleteRegister" ? (
+        <>
+          <DeleteRegister
+            func1={setName}
+            func2={setNewName}
+            func3={searchName}
+            arr={personList}
+            newName={newName}
+            list={searchList}
           />
-
-          {searchList ? (
-            <ul className={styles.list}>
-              {personList.map((person) => (
-                <li key={person.id}>
-                  <button
-                    onClick={() => {
-                      setNewName(person.name);
-                    }}
-                  >
-                    {person.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            ""
-          )}
-
-          <div className={styles.buttonContainer}>
-            <StandardButton
-              text="Buscar"
-              width="10"
-              fatherFunction={searchName}
-            />
-          </div>
-          <label htmlFor="newName">Novo Nome</label>
-          <input
-            type="text"
-            value={newName}
-            onChange={(e) => {
-              setNewName(e.target.value);
-            }}
-          />
-          <div className={styles.buttonContainer}>
-            <StandardButton text="Alterar" width="10" />
-          </div>
-        </div>
+        </>
       ) : (
-        <></>
+        <>
+        </>
       )}
     </div>
   );
