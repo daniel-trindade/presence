@@ -1,10 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import { app } from "../../firebaseConfig";
 
 import styles from "./Menager.module.css";
 import StandardButton from "../layout/StandardButton";
 
 const Menager = () => {
+  
   const [show, setShow] = useState("");
+  const [name, setName] = useState("");
+  const [nextKey, setNextKey] = useState(1);
+
+  useEffect(() => {
+    const db = getDatabase(app);
+    const dbRef = ref(db, 'Presence');
+
+    // Obtém o último valor da sequência
+    onValue(dbRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        const keys = Object.keys(data).map(Number); // Converte as chaves em números
+        const maxKey = Math.max(...keys); // Obtém o maior valor
+        setNextKey(maxKey + 1); // Define a próxima chave
+      }
+    });
+  }, []);
+
+  function newPerson(){
+
+    const db = getDatabase(app);
+    const dbRef = ref(db, `Presence/${nextKey}`);
+
+    set(dbRef, {
+      id:nextKey+1,
+      name: name
+    }).catch((error) => {
+      console.log("Erro ao adicionar pessoa: ", error)
+    })
+    
+    setName("")
+
+  }
+
+
 
   return (
     <div className={styles.menagerContainer}>
@@ -26,11 +64,12 @@ const Menager = () => {
 
         <div className={styles.newReg}>
           <label htmlFor="name">Nome completo</label>
-          <input type="text" placeholder="Último nome, Prenome Sobrenome"/>
+          <input type="text" placeholder="Último nome, Prenome Sobrenome" value={name} onChange={(e)=>{setName(e.target.value)}}/>
           <div className={styles.buttonContainer}>
             <StandardButton
             text="Cadastrar"
             width="10"
+            fatherFunction={newPerson}
             />
           </div>
         </div>
@@ -39,7 +78,7 @@ const Menager = () => {
 
         <div className={styles.newReg}>
         <label htmlFor="name">Nome</label>
-        <input type="text" placeholder="Digite um nome"/>
+        <input type="text" placeholder="Digite um nome" />
         <div className={styles.buttonContainer}>
           <StandardButton
           text="Buscar"
@@ -47,7 +86,7 @@ const Menager = () => {
           />
         </div>
         <label htmlFor="newName">Novo Nome</label>
-        <input type="text" placeholder="xxx"/>
+        <input type="text" placeholder="xxx" onChange={(e)=>{setName(e.target.value)}}/>
         <div className={styles.buttonContainer}>
           <StandardButton
           text="Alterar"

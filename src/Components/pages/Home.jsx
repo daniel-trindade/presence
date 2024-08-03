@@ -22,7 +22,7 @@ function Home(){
       />
       <Button 
         img="searchImg"
-        tag="Buscar por Nome"
+        tag="Gerenciar Nomes"
         link="/menager"
       />
       <Button 
@@ -35,6 +35,7 @@ function Home(){
         tag="Frequência Total"
         link="/home"
       />
+      
 
       <button onClick={getOut}> Sair </button>
 

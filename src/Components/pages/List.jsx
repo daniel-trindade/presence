@@ -27,7 +27,7 @@ function List(){
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
       setMembersList(data)
-      console.log("feito")
+      console.log(snapshot.val())
     });
   }
 
