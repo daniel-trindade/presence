@@ -1,7 +1,45 @@
+import { getDatabase, set, ref } from "firebase/database";
+import { app } from "../../firebaseConfig";
+import { useState } from "react";
+
 import styles from "./EditRegister.module.css"
+
 import StandardButton from "../layout/StandardButton";
 
-const EditRegister = ({func1, func2, func3, arr, newName, list}) => {
+
+const EditRegister = () => {
+
+  const [id, setID] = useState("")
+  const [name, setName] = useState("")
+  const [newName, setNewName] = useState("")
+  const [personList, setPersonList] = useState([])
+  const [searchList, setSearchList] = useState(false)
+
+
+  //PROCURA PESSOA POR NOME NO BANCO
+  const searchName = () => {
+    const matchs = new Array();
+
+    data.map((person) => {
+      const rule = new RegExp(name, "gi");
+      if (rule.test(person.name)) {
+        matchs.push(person);
+      }
+    });
+    setSearchList(true);
+    setPersonList(matchs);
+  };
+
+  //REGISTRA ALTERAÇÃO
+  const editReg = () => {
+    const db = getDatabase(app);
+    const dbRef = ref(db, `Presence/${id-1}`);
+    set(dbRef, {
+      name: newName,
+    }).catch((error) => {
+      console.log("Erro ao adicionar pessoa: ", error);
+    });
+  }
 
   return (
     <>
@@ -11,17 +49,18 @@ const EditRegister = ({func1, func2, func3, arr, newName, list}) => {
             type="text"
             placeholder="Digite um nome"
             onChange={(e) => {
-              func1(e.target.value);
+              setName(e.target.value);
             }}
           />
 
-          {list ? (
+          {searchList ? (
             <ul className={styles.list}>
-              {arr.map((person) => (
+              {personList.map((person) => (
                 <li key={person.id}>
                   <button
                     onClick={() => {
-                      func2(person.name);
+                      setID(person.id)
+                      setNewName(person.name);
                     }}
                   >
                     {person.name}
@@ -37,7 +76,7 @@ const EditRegister = ({func1, func2, func3, arr, newName, list}) => {
             <StandardButton
               text="Buscar"
               width="10"
-              fatherFunction={func3}
+              fatherFunction={searchName}
             />
           </div>
           
@@ -46,11 +85,14 @@ const EditRegister = ({func1, func2, func3, arr, newName, list}) => {
             type="text"
             value={newName}
             onChange={(e) => {
-              func2(e.target.value);
+              setNewName(e.target.value);
             }}
           />
           <div className={styles.buttonContainer}>
-            <StandardButton text="Alterar" width="10" />
+            <StandardButton
+              text="Alterar"
+              width="10"
+            />
           </div>
         </div>
     </>

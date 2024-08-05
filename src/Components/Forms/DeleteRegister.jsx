@@ -1,16 +1,54 @@
 import styles from "./DeleteRegister.module.css"
 import StandardButton from "../layout/StandardButton";
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import { getDatabase, ref, remove, onValue } from "firebase/database";
+import { app } from "../../firebaseConfig";
 
-const DeleteRegister = ({func1, func2, arr, list}) => {
+const DeleteRegister = () => {
 
-
+  const [name, setName] = useState("")
+  const [data, setData] = useState([])
   const [showDelConf, setShowDelConf] = useState(false)
-  const [pName, setPName] = useState("")
+
+  //RESGATA LISTA DO BANCO DE DADOS E SALVA NA VARIÁVEL DATA
+  useEffect(() => {
+    const db = getDatabase(app);
+    const dbRef = ref(db, "Presence");
+
+    onValue(dbRef, (snapshot) => {
+      if (snapshot.exists()) {
+        setData(snapshot.val());
+      }
+    });
+    }, []);
+
+
+  //PROCURA PESSOA POR NOME NO BANCO
+  const searchName = (e) => {
+    const matchs = new Array();
+
+    data.map((person) => {
+      const rule = new RegExp(name, "gi");
+      if (rule.test(person.name)) {
+        matchs.push(person);
+      }
+    });
+    setSearchList(true);
+    setPersonList(matchs);
+  };
+
+
 
   const negative = () =>{
     setPName("")
+    func1("")
     setShowDelConf(false)
+  }
+  
+  const deletePerson = () =>{
+    const db = getDatabase(app);
+    const dbRef =  ref(db, `Presence/${pID}`)
+    remove(dbRef)
   }
 
   return (
@@ -31,6 +69,7 @@ const DeleteRegister = ({func1, func2, arr, list}) => {
               <button
                 onClick={() => {
                   setPName(person.name)
+                  setPID(person.id+1)
                   if(pName){
                     setShowDelConf(true)
                   }
@@ -63,6 +102,7 @@ const DeleteRegister = ({func1, func2, arr, list}) => {
               <StandardButton
                 text="Sim"
                 width="5"
+                fatherFunction={deletePerson}
               />
               <StandardButton
                 text="Não"
