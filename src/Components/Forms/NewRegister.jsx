@@ -1,6 +1,11 @@
-import { useState } from "react";
-import StandardButton from "../layout/StandardButton";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { useState, useEffect } from "react";
+import { app } from "../../firebaseConfig";
+
 import styles from "./NewRegister.module.css"
+
+import StandardButton from "../layout/StandardButton";
+
 
 const NewRegister = () => {
 

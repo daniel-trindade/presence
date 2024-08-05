@@ -1,6 +1,6 @@
-import { getDatabase, set, ref } from "firebase/database";
+import { getDatabase, set, ref, onValue } from "firebase/database";
 import { app } from "../../firebaseConfig";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./EditRegister.module.css"
 
@@ -9,12 +9,25 @@ import StandardButton from "../layout/StandardButton";
 
 const EditRegister = () => {
 
+  
   const [id, setID] = useState("")
   const [name, setName] = useState("")
+  const [data, setData] = useState([])
   const [newName, setNewName] = useState("")
   const [personList, setPersonList] = useState([])
   const [searchList, setSearchList] = useState(false)
 
+  //RESGATA LISTA DO BANCO DE DADOS E SALVA NA VARIÁVEL DATA
+  useEffect(() => {
+    const db = getDatabase(app);
+    const dbRef = ref(db, "Presence");
+
+    onValue(dbRef, (snapshot) => {
+      if (snapshot.exists()) {
+        setData(snapshot.val());
+      }
+    });
+  }, []);
 
   //PROCURA PESSOA POR NOME NO BANCO
   const searchName = () => {
