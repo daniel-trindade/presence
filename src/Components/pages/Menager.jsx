@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState } from "react"
 
-import StandardButton from "../layout/StandardButton";
-import DeleteRegister from "../Forms/DeleteRegister";
-import EditRegister from "../Forms/EditRegister";
-import NewRegister from "../Forms/NewRegister";
-import styles from "./Menager.module.css";
+import StandardButton from "../layout/StandardButton"
+import DeleteRegister from "../Forms/DeleteRegister"
+import EditRegister from "../Forms/EditRegister"
+import NewRegister from "../Forms/NewRegister"
+import styles from "./Menager.module.css"
 
 const Menager = () => {
+
   const [show, setShow] = useState("");
 
   return (
@@ -16,18 +17,17 @@ const Menager = () => {
         <StandardButton
           text="Novo Cadastro"
           width="10"
-          fatherFunction={setShow("newRegister")}
+          fatherFunction={() => setShow("newRegister")}
         />
         <StandardButton
           text="Editar Nome"
           width="10"
-          fatherFunction={setShow("editRegister")}
+          fatherFunction={() => setShow("editRegister")}
         />
-
         <StandardButton
           text="Excluir"
           width="10"
-          fatherFunction={setShow("deleteRegister")}
+          fatherFunction={() =>setShow("deleteRegister")}
         />
       </div>
 
@@ -40,8 +40,9 @@ const Menager = () => {
       ) : (
         <></>
       )}
+      
     </div>
-  );
-};
+  )
+}
 
 export default Menager;

@@ -1,14 +1,19 @@
-import styles from "./DeleteRegister.module.css"
-import StandardButton from "../layout/StandardButton";
-import { useState, useEffect} from "react";
 import { getDatabase, ref, remove, onValue } from "firebase/database";
+import { useState, useEffect} from "react";
 import { app } from "../../firebaseConfig";
+
+import styles from "./DeleteRegister.module.css"
+
+import StandardButton from "../layout/StandardButton";
 
 const DeleteRegister = () => {
 
+  const [id, setID] = useState("")
   const [name, setName] = useState("")
   const [data, setData] = useState([])
-  const [showDelConf, setShowDelConf] = useState(false)
+  const [showConf, setShowConf] = useState(false)
+  const [personList, setPersonList] = useState([])
+  const [searchList, setSearchList] = useState(false)
 
   //RESGATA LISTA DO BANCO DE DADOS E SALVA NA VARIÁVEL DATA
   useEffect(() => {
@@ -19,12 +24,11 @@ const DeleteRegister = () => {
       if (snapshot.exists()) {
         setData(snapshot.val());
       }
-    });
-    }, []);
-
+    })
+  }, [])
 
   //PROCURA PESSOA POR NOME NO BANCO
-  const searchName = (e) => {
+  const searchName = () => {
     const matchs = new Array();
 
     data.map((person) => {
@@ -32,23 +36,22 @@ const DeleteRegister = () => {
       if (rule.test(person.name)) {
         matchs.push(person);
       }
-    });
+    })
     setSearchList(true);
     setPersonList(matchs);
-  };
-
-
+  }
 
   const negative = () =>{
-    setPName("")
-    func1("")
-    setShowDelConf(false)
+    setName("")
+    setID("")
+    setShowConf(false)
+    setSearchList(false)
   }
   
   const deletePerson = () =>{
     const db = getDatabase(app);
-    const dbRef =  ref(db, `Presence/${pID}`)
-    remove(dbRef)
+    const dbRef =  ref(db, `Presence/${id}`)
+    dbRef.remove()
   }
 
   return (
@@ -57,22 +60,18 @@ const DeleteRegister = () => {
       <input
         type="text"
         placeholder="Digite um nome"
-        onChange={(e) => {
-          func1(e.target.value);
-        }}
+        onChange={(e) => setName(e.target.value)}
       />
 
-      {list ? (
+      {searchList ? (
         <ul className={styles.list}>
-          {arr.map((person) => (
+          {personList.map((person) => (
             <li key={person.id}>
               <button
                 onClick={() => {
-                  setPName(person.name)
-                  setPID(person.id+1)
-                  if(pName){
-                    setShowDelConf(true)
-                  }
+                  setID(person.id+1)
+                  setName(person.name)
+                  setShowConf(true)
                 }}
               >
                 {person.name}
@@ -88,15 +87,15 @@ const DeleteRegister = () => {
         <StandardButton
           text="Buscar"
           width="10"
-          fatherFunction={func2}
+          fatherFunction={searchName}
         />
       </div>
 
-      {showDelConf ? (
+      {showConf ? (
         <>
           <h2>Você deseja apagar o registro de:</h2>
           <div className={styles.confContainer}>
-            <p>{pName}</p>
+            <p>{name}</p>
           
             <div className={styles.btnContainer}>
               <StandardButton

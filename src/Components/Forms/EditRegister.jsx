@@ -49,6 +49,7 @@ const EditRegister = () => {
     const dbRef = ref(db, `Presence/${id-1}`);
     set(dbRef, {
       name: newName,
+      id: id,
     }).catch((error) => {
       console.log("Erro ao adicionar pessoa: ", error);
     });
@@ -105,6 +106,7 @@ const EditRegister = () => {
             <StandardButton
               text="Alterar"
               width="10"
+              fatherFunction={editReg}
             />
           </div>
         </div>
