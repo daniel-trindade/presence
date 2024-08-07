@@ -47,6 +47,7 @@ const EditRegister = () => {
   const editReg = () => {
     const db = getDatabase(app);
     const dbRef = ref(db, `Presence/${id-1}`);
+    console.log("Realizando alteração na referência: ", dbRef, " Do nome: ", newName)
     set(dbRef, {
       name: newName,
       id: id,

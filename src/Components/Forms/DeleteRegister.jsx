@@ -1,4 +1,4 @@
-import { getDatabase, ref, remove, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, remove } from "firebase/database";
 import { useState, useEffect} from "react";
 import { app } from "../../firebaseConfig";
 
@@ -8,6 +8,9 @@ import StandardButton from "../layout/StandardButton";
 
 const DeleteRegister = () => {
 
+
+  const db = getDatabase(app);
+  const dbRef = ref(db, "Presence");
   const [id, setID] = useState("")
   const [name, setName] = useState("")
   const [data, setData] = useState([])
@@ -17,9 +20,6 @@ const DeleteRegister = () => {
 
   //RESGATA LISTA DO BANCO DE DADOS E SALVA NA VARIÁVEL DATA
   useEffect(() => {
-    const db = getDatabase(app);
-    const dbRef = ref(db, "Presence");
-
     onValue(dbRef, (snapshot) => {
       if (snapshot.exists()) {
         setData(snapshot.val());
@@ -41,6 +41,7 @@ const DeleteRegister = () => {
     setPersonList(matchs);
   }
 
+  //EM CASO DE DESISTENCIA DA REMOÇÃO
   const negative = () =>{
     setName("")
     setID("")
@@ -48,10 +49,14 @@ const DeleteRegister = () => {
     setSearchList(false)
   }
   
-  const deletePerson = () =>{
-    const db = getDatabase(app);
-    const dbRef =  ref(db, `Presence/${id}`)
-    dbRef.remove()
+  //FUNÇÃO PARA DELETAR PESSOA
+  const deletePerson = (idP) =>{
+    const dbRef = ref(db, `Presence/${idP}`)
+    remove(dbRef)
+    setName("")
+    setID("")
+    setShowConf(false)
+    setSearchList(false)
   }
 
   return (
@@ -69,9 +74,10 @@ const DeleteRegister = () => {
             <li key={person.id}>
               <button
                 onClick={() => {
-                  setID(person.id+1)
+                  setID(person.id-1)
                   setName(person.name)
                   setShowConf(true)
+                  console.log("id para deletar: ", id, "nome do indivíduo: ", name)
                 }}
               >
                 {person.name}
@@ -101,7 +107,7 @@ const DeleteRegister = () => {
               <StandardButton
                 text="Sim"
                 width="5"
-                fatherFunction={deletePerson}
+                fatherFunction={() => deletePerson(id)}
               />
               <StandardButton
                 text="Não"
