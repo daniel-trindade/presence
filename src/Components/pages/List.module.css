@@ -4,10 +4,17 @@
 }
 
 .header a{
-  width: 6em;
+  margin: 2em;
   text-decoration: none;
-  color: #213D84; padding: 1.5em .5em;
-  font-weight: 400;
+  font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header img{
+  width: 1.5em;
 }
 
 .header h1{

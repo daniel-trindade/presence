@@ -1,7 +1,7 @@
 import { useState, useEffect} from "react"
 import { app } from "../../firebaseConfig"
 import { getDatabase, ref, onValue} from "firebase/database"
-import { FaCaretLeft } from "react-icons/fa6"
+import backImage from "../../imgs/back.png"
 
 import styles from "./List.module.css"
 import StandardButton from "../layout/StandardButton"
@@ -41,7 +41,7 @@ function List(){
     <div className={styles.listContainer}>
       <div className={styles.header}>
         <h1>Lançar Frequência</h1>
-        <a href="/home"><FaCaretLeft /> Voltar</a>
+        <a href="/home"> <img src={backImage} alt="Seta para voltar" /> Voltar</a>
       </div>
       <div className={styles.inputs}>
         <input className={styles.date} type="date" name="date" id="date" value={currentDate}/>
