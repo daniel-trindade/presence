@@ -1,4 +1,5 @@
 import { useState } from "react"
+import backImage from "../../imgs/back.png"
 
 import StandardButton from "../layout/StandardButton"
 import DeleteRegister from "../Forms/DeleteRegister"
@@ -12,7 +13,10 @@ const Menager = () => {
 
   return (
     <div className={styles.menagerContainer}>
-      <h1>Gerenciador</h1>
+      <div className={styles.titleContainer}>
+        <h1>Gerenciador</h1>
+        <a href="/home"> <img src={backImage} alt="icone para voltar" /> Voltar</a>
+      </div>
       <div className={styles.buttonsContainer}>
         <StandardButton
           text="Novo Cadastro"

@@ -15,59 +15,18 @@
   border-bottom: 3px dotted #213D84;
 }
 
-/* NEW REGISTER */
-
-.newReg{
-  width: 100%;
-  height: 20em;
+.titleContainer{
   display: flex;
-  flex-direction: column;
-  margin-top: 2em;
-  padding: 1em;
+  justify-content: space-between;
 }
 
-.newReg label{
-  font-size: 1.5em;
+.titleContainer a{
+  margin: 2em;
+  text-decoration: none;
+  font-size: 1.1em;
 }
 
-.newReg input{
-  font-size: 1.2em;
-  margin-bottom: 1em;
-  border: 1px solid #213D84;
-}
-
-.buttonContainer{
-  width: 100%;
-  height: 5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2em;
-}
-
-.list {
-  min-height: 100px; /* Altura máxima para a lista */
-  overflow-y: auto; /* Habilita a rolagem vertical */
-  background-color: #fff;
-  padding: 0;
-  margin-top: -1em;
-  margin-bottom: 1em;
-  list-style-type: none; /* Remove os marcadores da lista */
-}
-
-.list li {
-  padding: 10px; /* Espaçamento interno dos itens */
-  cursor: pointer; /* Muda o cursor quando sobre um item */
-}
-
-.list li button {
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-}
-
-.list li:hover {
-  background-color: #f0f0f0; /* Destaca o item ao passar o mouse */
+.titleContainer img{
+  width: 1.5em;
+  
 }
