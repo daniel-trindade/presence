@@ -1,3 +1,5 @@
+
+
 .menagerContainer{
   padding: 1em;
   margin-bottom: 200em;
@@ -5,6 +7,7 @@
 
 .menagerContainer h1{
   padding: .5em;
+  color: #213D84;
 }
 
 .buttonsContainer{
@@ -28,6 +31,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #213D84;
 }
 
 .titleContainer img{

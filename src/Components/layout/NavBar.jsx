@@ -1,7 +1,6 @@
 import styles from "./NavBar.module.css"
 import presenceIcon from "../../imgs/presence-white.png"
 import { TiThMenu } from "react-icons/ti";
-import { useState } from "react";
 
 function NavBar(){
 
