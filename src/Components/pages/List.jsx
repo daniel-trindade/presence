@@ -8,7 +8,12 @@ import StandardButton from "../layout/StandardButton";
 
 function List() {
 
-  const [membersList, setMembersList] = useState([]);
+  const [membersList, setMembersList] = useState([
+    // {id: 1, name: "Daniel Trindade", presence:{"2024-08-08": false,"2024-08-09": false}},
+    // {id: 2, name: "Lenuzia Trindade"},
+    // {id: 3, name: "Moroni Trindade", presence:{"2024-08-05": false}},
+
+  ]);
   const [currentDate, setCurrentDate] = useState();
 
   //SET PARA A DATA DO INPUT DATE
@@ -31,21 +36,28 @@ function List() {
 
   const setPresence = (id, value) => {
 
-    const updateMemberList = membersList.map(member =>{
+    const updateArr = []
+
+    membersList.map(member =>{
       if(member.id===id){
-        if(!member.presence){
-          return {...member, presence:{[currentDate]: value}} 
-        }else{
-          for(let i=0; i<member.Presence.lenght; i++){
-            if(member.presence[i] === currentDate){
-              return member.presence[i].currentDate = value
+         if(!member.presence){
+          console.log("não possui presença")
+          updateArr.push({...member, presence:{[currentDate]: value}})
+          return
+         }else{
+          for(let i=0; i<Object.keys(member.presence).length; i++){
+            if(Object.keys(member.presence)[i]===currentDate){
+              member.presence[Object.keys(member.presence)[i]]=value
             }
           }
-          return {...member.presence, presence:{[currentDate]: value}}
-        }
-      }
-    })
-    
+          updateArr.push({...member, presence:{...member.presence, [currentDate]: value}})
+          return
+         }
+       }
+       updateArr.push(member)
+     })
+     setMembersList(updateArr)
+     console.log(membersList)
   };
 
   return (
@@ -69,8 +81,7 @@ function List() {
         <StandardButton 
           text="Lançar Frequencia"  
           fatherFunction={() => {
-            setPresence(0, true)
-            console.log(membersList)
+
           }}
         />
       </div>
