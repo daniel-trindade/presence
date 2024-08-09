@@ -10,7 +10,7 @@ const DeleteRegister = () => {
 
 
   const db = getDatabase(app);
-  const dbRef = ref(db, "Presence");
+  const dbRef = ref(db, "presence");
   const [id, setID] = useState("")
   const [name, setName] = useState("")
   const [data, setData] = useState([])
@@ -51,7 +51,7 @@ const DeleteRegister = () => {
   
   //FUNÇÃO PARA DELETAR PESSOA
   const deletePerson = (idP) =>{
-    const dbRef = ref(db, `Presence/${idP}`)
+    const dbRef = ref(db, `presence/${idP}`)
     remove(dbRef)
     setName("")
     setID("")

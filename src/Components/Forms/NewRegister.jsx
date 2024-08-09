@@ -15,7 +15,7 @@ const NewRegister = () => {
   //RESGATA LISTA DO BANCO DE DADOS E SALVA NA VARIÁVEL DATA
   useEffect(() => {
     const db = getDatabase(app);
-    const dbRef = ref(db, "Presence");
+    const dbRef = ref(db, "presence");
 
     onValue(dbRef, (snapshot) => {
       if (snapshot.exists()) {
@@ -31,7 +31,7 @@ const NewRegister = () => {
     const nextKey = maxKey+1
     console.log(maxKey)
     const db = getDatabase(app);
-    const dbRef = ref(db, `Presence/${nextKey}`);
+    const dbRef = ref(db, `presence/${nextKey}`);
     set(dbRef, {
       id: nextKey + 1,
       name: name,

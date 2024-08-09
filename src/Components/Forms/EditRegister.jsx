@@ -20,7 +20,7 @@ const EditRegister = () => {
   //RESGATA LISTA DO BANCO DE DADOS E SALVA NA VARIÁVEL DATA
   useEffect(() => {
     const db = getDatabase(app);
-    const dbRef = ref(db, "Presence");
+    const dbRef = ref(db, "presence");
 
     onValue(dbRef, (snapshot) => {
       if (snapshot.exists()) {
@@ -46,7 +46,7 @@ const EditRegister = () => {
   //REGISTRA ALTERAÇÃO
   const editReg = () => {
     const db = getDatabase(app);
-    const dbRef = ref(db, `Presence/${id-1}`);
+    const dbRef = ref(db, `presence/${id-1}`);
     console.log("Realizando alteração na referência: ", dbRef, " Do nome: ", newName)
     set(dbRef, {
       name: newName,
