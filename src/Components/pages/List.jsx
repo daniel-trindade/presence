@@ -8,12 +8,7 @@ import StandardButton from "../layout/StandardButton";
 
 function List() {
 
-  const [membersList, setMembersList] = useState([
-    // {id: 1, name: "Daniel Trindade", presence:{"2024-08-08": false,"2024-08-09": false}},
-    // {id: 2, name: "Lenuzia Trindade"},
-    // {id: 3, name: "Moroni Trindade", presence:{"2024-08-05": false}},
-
-  ]);
+  const [membersList, setMembersList] = useState([]);
   const [currentDate, setCurrentDate] = useState();
 
   //SET PARA A DATA DO INPUT DATE
@@ -27,21 +22,21 @@ function List() {
   //BUSCA LISTA NO BANCO E PREPARA PARA RENDERIZAR
   const fetchData = async () => {
     const db = getDatabase(app);
-    const dbRef = ref(db, "Presence/");
+    const dbRef = ref(db, "presence/");
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
       setMembersList(data);
     });
   };
 
+  //LANÇA A PRESENÇA NO ARRAY MEMBERLIST E DEIXA PRONTO PARA ATUALIZAR NO BANCO
   const setPresence = (id, value) => {
 
     const updateArr = []
 
-    membersList.map(member =>{
+    membersList.forEach(member =>{
       if(member.id===id){
          if(!member.presence){
-          console.log("não possui presença")
           updateArr.push({...member, presence:{[currentDate]: value}})
           return
          }else{
@@ -55,10 +50,32 @@ function List() {
          }
        }
        updateArr.push(member)
+       return
      })
      setMembersList(updateArr)
-     console.log(membersList)
-  };
+     
+  }
+
+  //CONVERTE O ARRAY PARA OBJETO MAPEADO
+  const arrayMap = (arr) =>{
+    const obj = {}
+
+    arr.forEach(member => {
+      obj[member.id-1] = member
+    })
+
+    return obj
+  }
+
+  //ATUALIZA FREQUENCIA NO BANCO
+  const updatePresence = () =>{
+    const obj = arrayMap(membersList)
+    const db = getDatabase(app);
+    const dbRef = ref(db, "presence");
+    console.log(membersList)
+    console.log(console.log(JSON.stringify(obj, null, 2)))
+    update(dbRef, obj)
+  }
 
   return (
     <div className={styles.listContainer}>
@@ -81,7 +98,7 @@ function List() {
         <StandardButton 
           text="Lançar Frequencia"  
           fatherFunction={() => {
-
+            updatePresence()
           }}
         />
       </div>
