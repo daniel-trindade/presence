@@ -7,6 +7,7 @@ import styles from "./List.module.css";
 import StandardButton from "../layout/StandardButton";
 
 function List() {
+
   const [membersList, setMembersList] = useState([]);
   const [currentDate, setCurrentDate] = useState();
 
@@ -15,6 +16,7 @@ function List() {
     const today = new Date();
     const formattedDate = today.toISOString().split("T")[0];
     setCurrentDate(formattedDate);
+    fetchData();
   }, []);
 
   //BUSCA LISTA NO BANCO E PREPARA PARA RENDERIZAR
@@ -27,28 +29,23 @@ function List() {
     });
   };
 
-  //CHAMA A FUNÇÃO PARA RENDERIZAR A LISTA
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const setPresence = (id, value) => {
-    // console.log(membersList)
-    // const updatedMembersList = membersList.map(member => {
-    //   if (member.id === id) {
-        
-    //     return {
-    //       ...member,
-    //       presence: [
-    //         ...(member.presence || []),
-    //         { date: currentDate, value: value }
-    //       ]
-    //     };
-    //   }
-    //   return member;
-    // });
-    // setMembersList(updatedMembersList);
-    // console.log(membersList)
+
+    const updateMemberList = membersList.map(member =>{
+      if(member.id===id){
+        if(!member.presence){
+          return {...member, presence:{[currentDate]: value}} 
+        }else{
+          for(let i=0; i<member.Presence.lenght; i++){
+            if(member.presence[i] === currentDate){
+              return member.presence[i].currentDate = value
+            }
+          }
+          return {...member.presence, presence:{[currentDate]: value}}
+        }
+      }
+    })
+    
   };
 
   return (
@@ -72,7 +69,8 @@ function List() {
         <StandardButton 
           text="Lançar Frequencia"  
           fatherFunction={() => {
-
+            setPresence(0, true)
+            console.log(membersList)
           }}
         />
       </div>
