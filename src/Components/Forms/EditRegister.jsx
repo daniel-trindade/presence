@@ -107,7 +107,12 @@ const EditRegister = () => {
             <StandardButton
               text="Alterar"
               width="10"
-              fatherFunction={editReg}
+              fatherFunction={()=>{
+                editReg()
+                setName("")
+                setNewName("")
+                setSearchList(false)
+              }}
             />
           </div>
         </div>
