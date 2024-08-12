@@ -1,0 +1,31 @@
+.sideBarOpen{
+  height: 100vh;
+  width: 40%;
+  background: linear-gradient(to right, #4E5770, #213D84);
+  top: 0;
+  left: 0px;
+  border-radius: 0px 20px 20px 0px;
+  position: absolute;
+  transform: translateX(0%);
+  opacity: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 2;
+}
+
+.closeBtn{
+  width: 1em;
+  height: 1em;
+  font-size: 2em;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  position: absolute;
+  right: 10px;
+  top: 1em;
+}
+
+.sideBarClose{
+  transform: translateX(-110%);
+  opacity: 0;
+  transition: transform 1s ease, opacity 0.3s ease;
+}

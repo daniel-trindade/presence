@@ -2,16 +2,12 @@ import styles from "./Home.module.css"
 
 import Button from "../layout/Button"
 
-
-
 function Home(){
 
   function getOut(){
     sessionStorage.removeItem("firebase_id_token")
     document.location.href="/login"
   }
-
-
 
   return(
     <div className={styles.gridContainer}>

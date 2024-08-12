@@ -16,8 +16,8 @@
 
 .menuIcon{
   font-size: 2.5rem;
-  margin-left: .3em;
-  color: white !important;
+  margin-left: .2em;
+  color: #fff;
 }
 
 .navBar h1{
@@ -29,4 +29,9 @@
 .icon{
   width: 46px;
   margin-right: 10px;
+}
+
+.sideBarButton{
+  background-color: transparent;
+  border: none;
 }

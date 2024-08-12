@@ -1,16 +1,32 @@
-import styles from "./NavBar.module.css"
-import presenceIcon from "../../imgs/presence-white.png"
+import { useState } from "react";
 import { TiThMenu } from "react-icons/ti";
 
-function NavBar(){
+import presenceIcon from "../../imgs/presence-white.png";
+import ToggleMenu from "./ToggleMenu";
 
-  return(
+import styles from "./NavBar.module.css";
+
+function NavBar() {
+  const [open, setOpen] = useState(false);
+
+  //FUNÇÃO PARA ABRIR OU FECHAR SIDEBAR
+  const toggleBtn = () => {
+    setOpen(!open);
+  };
+
+  return (
     <nav className={styles.navBar}>
-      <TiThMenu className={styles.menuIcon}/>
-      <a href="/home"><h1>Presence</h1></a>
-      <img src={presenceIcon} alt="Presence Icon" className={styles.icon}/>
+      
+      <button className={styles.sideBarButton} onClick={toggleBtn}>
+        <TiThMenu className={styles.menuIcon} />
+        <ToggleMenu open={open} func1={toggleBtn} />
+      </button>
+      <a href="/home">
+        <h1>Presence</h1>
+      </a>
+      <img src={presenceIcon} alt="Presence Icon" className={styles.icon} />
     </nav>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;
