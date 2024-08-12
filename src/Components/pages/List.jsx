@@ -7,7 +7,6 @@ import styles from "./List.module.css";
 import StandardButton from "../layout/StandardButton";
 
 function List() {
-
   const [membersList, setMembersList] = useState([]);
   const [currentDate, setCurrentDate] = useState();
 
@@ -31,51 +30,77 @@ function List() {
 
   //LANÇA A PRESENÇA NO ARRAY MEMBERLIST E DEIXA PRONTO PARA ATUALIZAR NO BANCO
   const setPresence = (id, value) => {
+    const updateArr = [];
 
-    const updateArr = []
-
-    membersList.forEach(member =>{
-      if(member.id===id){
-         if(!member.presence){
-          updateArr.push({...member, presence:{[currentDate]: value}})
-          return
-         }else{
-          for(let i=0; i<Object.keys(member.presence).length; i++){
-            if(Object.keys(member.presence)[i]===currentDate){
-              member.presence[Object.keys(member.presence)[i]]=value
+    membersList.forEach((member) => {
+      if (member.id === id) {
+        if (!member.presence) {
+          updateArr.push({ ...member, presence: { [currentDate]: value } });
+          return;
+        } else {
+          for (let i = 0; i < Object.keys(member.presence).length; i++) {
+            if (Object.keys(member.presence)[i] === currentDate) {
+              member.presence[Object.keys(member.presence)[i]] = value;
             }
           }
-          updateArr.push({...member, presence:{...member.presence, [currentDate]: value}})
-          return
-         }
-       }
-       updateArr.push(member)
-       return
-     })
-     setMembersList(updateArr)
-     
-  }
+          updateArr.push({
+            ...member,
+            presence: { ...member.presence, [currentDate]: value },
+          });
+          return;
+        }
+      }
+      updateArr.push(member);
+      return;
+    });
+    setMembersList(updateArr);
+  };
 
   //CONVERTE O ARRAY PARA OBJETO MAPEADO
-  const arrayMap = (arr) =>{
-    const obj = {}
+  const arrayMap = (arr) => {
+    const obj = {};
 
-    arr.forEach(member => {
-      obj[member.id-1] = member
-    })
+    arr.forEach((member) => {
+      obj[member.id - 1] = member;
+    });
 
-    return obj
-  }
+    return obj;
+  };
 
   //ATUALIZA FREQUENCIA NO BANCO
-  const updatePresence = () =>{
-    const obj = arrayMap(membersList)
+  const updatePresence = () => {
+    const obj = arrayMap(membersList);
     const db = getDatabase(app);
     const dbRef = ref(db, "presence");
-    console.log(membersList)
-    console.log(console.log(JSON.stringify(obj, null, 2)))
-    update(dbRef, obj)
-  }
+    console.log(membersList);
+    console.log(console.log(JSON.stringify(obj, null, 2)));
+    update(dbRef, obj);
+  };
+
+  // FUNÇÃO PARA DESMARCAR TODOS OS CHECKBOXES
+  const turnAll = () => {
+    const updateArr = membersList.map((member) => ({
+      ...member,
+      presence: {
+        ...member.presence,
+        [currentDate]: !member.presence?.[currentDate],
+      },
+    }));
+    setMembersList(updateArr);
+  };
+
+
+  //FUNÇÃO PARA LIMPAR CHECKBOXES
+  const clear= () => {
+    const updateArr = membersList.map((member) => ({
+      ...member,
+      presence: {
+        ...member.presence,
+        [currentDate]: false,
+      },
+    }));
+    setMembersList(updateArr);
+  };
 
   return (
     <div className={styles.listContainer}>
@@ -88,17 +113,28 @@ function List() {
       </div>
       <div className={styles.inputs}>
         <input
+          type="checkbox"
+          name="global"
+          id="global"
+          onChange={turnAll}
+          className={styles.turnAll}
+        />
+        <input
           className={styles.date}
           type="date"
           name="date"
           id="date"
           value={currentDate}
-          onChange={(e) => setCurrentDate(e.target.value)}
+          onChange={(e) => {
+            setCurrentDate(e.target.value)
+            clear()
+          }}
         />
-        <StandardButton 
-          text="Lançar Frequencia"  
+        <StandardButton
+          text="Lançar Frequencia"
           fatherFunction={() => {
             updatePresence()
+            clear()
           }}
         />
       </div>
@@ -110,6 +146,7 @@ function List() {
               type="checkbox"
               name={"presence" + member.id}
               id={"presence" + member.id}
+              checked={member.presence?.[currentDate] || false}
               onChange={(e) => {
                 setPresence(member.id, e.target.checked);
               }}
