@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TiThMenu } from "react-icons/ti";
+import { useLocation } from "react-router-dom";
 
 import presenceIcon from "../../imgs/presence-white.png";
 import ToggleMenu from "./ToggleMenu";
@@ -9,14 +10,21 @@ import styles from "./NavBar.module.css";
 function NavBar() {
   const [open, setOpen] = useState(false);
 
+  const location = useLocation()
+  const print = () =>{
+    console.log(location)
+  }
+
+
   //FUNÇÃO PARA ABRIR OU FECHAR SIDEBAR
   const toggleBtn = () => {
-    setOpen(!open);
-  };
-
+    if(location.pathname!="/login"){
+      setOpen(!open);
+    };
+  }
+    
   return (
     <nav className={styles.navBar}>
-      
       <button className={styles.sideBarButton} onClick={toggleBtn}>
         <TiThMenu className={styles.menuIcon} />
         <ToggleMenu open={open} func1={toggleBtn} />

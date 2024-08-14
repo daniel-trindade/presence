@@ -6,6 +6,8 @@ import Signup from '../Components/pages/Signup';
 import Login from '../Components/pages/Login';
 import List from '../Components/pages/List';
 import Menager from '../Components/pages/Menager';
+import NavBar from '../Components/layout/NavBar';
+import Footer from '../Components/layout/Footer'
 
 
 
@@ -28,6 +30,7 @@ function Paths(){
   return(
     <>
       <Router>
+        <NavBar/>
         <Routes>
           <Route exact path='/' element={<Login/>}/>
           <Route path='*' element={<Login/>}/>
@@ -36,6 +39,7 @@ function Paths(){
           <Route exact path='/menager' element={<Private Item={Menager}/>}/>
           <Route path='/signup' element={<Signup/>}/>
         </Routes>
+        <Footer/>
       </Router>
     </>
 

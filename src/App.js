@@ -9,13 +9,13 @@ function App() {
 
   return (
     <div className="app-wrapper">
-      <NavBar/>
+      {/* <NavBar/> */}
       <div className="content-wrapper">
         <Container>
           <Paths/>
         </Container>
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

@@ -31,10 +31,6 @@ function Home(){
         tag="Frequência Total"
         link="/home"
       />
-      
-
-      <button onClick={getOut}> Sair </button>
-
     </div>
   )
 }
