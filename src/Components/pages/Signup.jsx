@@ -17,9 +17,7 @@ function Signup(){
 
   const [
     createUserWithEmailAndPassword,
-    user,
     loading,
-    error,
   ] = useCreateUserWithEmailAndPassword(auth);
   
 

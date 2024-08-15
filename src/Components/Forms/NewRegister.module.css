@@ -17,6 +17,12 @@
   font-size: 1.2em;
   margin-bottom: 1em;
   border: 1px solid #213D84;
+  color: #213D84;
+}
+
+.newReg input:focus{
+  border-color: #213D84;
+  outline: solid 2px #213D84;
 }
 
 .buttonContainer{

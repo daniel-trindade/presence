@@ -18,7 +18,9 @@ function NavBar() {
 
   //FUNÇÃO PARA ABRIR OU FECHAR SIDEBAR
   const toggleBtn = () => {
-    if(location.pathname!="/login"){
+    if(location.pathname==="/login"||location.pathname==="/"||location.pathname==="/signup"){
+      
+    }else{
       setOpen(!open);
     };
   }
@@ -32,6 +34,7 @@ function NavBar() {
       <a href="/home">
         <h1>Presence</h1>
       </a>
+      <button onClick={print}>Print</button>
       <img src={presenceIcon} alt="Presence Icon" className={styles.icon} />
     </nav>
   );

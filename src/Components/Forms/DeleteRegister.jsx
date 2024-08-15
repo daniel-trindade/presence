@@ -25,13 +25,13 @@ const DeleteRegister = () => {
         setData(snapshot.val());
       }
     })
-  }, [])
+  }, [dbRef])
 
   //PROCURA PESSOA POR NOME NO BANCO
   const searchName = () => {
-    const matchs = new Array();
+    const matchs = []
 
-    data.map((person) => {
+    data.forEach((person) => {
       const rule = new RegExp(name, "gi");
       if (rule.test(person.name)) {
         matchs.push(person);
