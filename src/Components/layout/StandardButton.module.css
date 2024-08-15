@@ -1,11 +1,12 @@
 .button{
   padding: .2em;
-  background: linear-gradient(to right, #4E5770, #213D84);
+  background: linear-gradient(to right, #4E5770, #213d84);
   color: #fff;
   font-size: 1.2rem;
   font-weight: 400;
   border-radius: 20px;
   margin: 0 .2em;
+  box-shadow: 5px 5px 1px rgba(33, 61, 132, 0.4);
 }
 
 .width-5 {
