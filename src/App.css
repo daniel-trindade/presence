@@ -1,6 +1,7 @@
 /* Configuração básica do body e html */
 html, body {
   height: 100%;
+  background-color: rgb(238, 237, 240);
 }
 
 /* Wrapper para utilizar o flexbox */

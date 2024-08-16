@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { TiThMenu } from "react-icons/ti";
-import { useLocation } from "react-router-dom";
 
 import presenceIcon from "../../imgs/presence-white.png";
 import ToggleMenu from "./ToggleMenu";
@@ -9,7 +8,6 @@ import styles from "./NavBar.module.css";
 
 function NavBar() {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
 
   //FUNÇÃO PARA HABILITAR SIDEBAR
   function toggleBtn() {
