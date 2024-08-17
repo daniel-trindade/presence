@@ -22,7 +22,7 @@ const ToggleMenu = ({open, func1}) => {
       <div className={styles.listContainer}>
         <h1>Menu</h1>
         <ul>
-          <li><a href="/list">Lançar Ausencias</a></li>
+          <li><a href="/list">Lançar Frequência</a></li>
           <li><a href="/menager">Gerenciar Nomes</a></li>
           <li><a href="/home">Relatórios</a></li>
           <li><a href="/home">Frequência</a></li>

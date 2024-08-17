@@ -5,6 +5,7 @@ import Home from '../Components/pages/Home';
 import Signup from '../Components/pages/Signup';
 import Login from '../Components/pages/Login';
 import List from '../Components/pages/List';
+import Reports from '../Components/pages/Reports';
 import Menager from '../Components/pages/Menager';
 import NavBar from '../Components/layout/NavBar';
 import Footer from '../Components/layout/Footer'
@@ -37,6 +38,7 @@ function Paths(){
           <Route exact path='/home' element={<Private Item={Home}/>}/>
           <Route exact path='/list' element={<Private Item={List}/>}/>
           <Route exact path='/menager' element={<Private Item={Menager}/>}/>
+          <Route exact path='/reports' element={<Private Item={Reports}/>}/>
           <Route path='/signup' element={<Signup/>}/>
         </Routes>
         <Footer/>

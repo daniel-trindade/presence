@@ -8,7 +8,7 @@ function Home(){
     <div className={styles.gridContainer}>
      <Button 
         img="checkList"
-        tag="Lançar ausencias"
+        tag="Lançar Frequência"
         link="/list"
       />
       <Button 
@@ -19,7 +19,7 @@ function Home(){
       <Button 
         img="pizzaGraf"
         tag="Relatório Gerais"
-        link="/home"
+        link="/reports"
       />
       <Button 
         text="180"
