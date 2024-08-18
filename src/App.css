@@ -1,24 +1,5 @@
-/* Configuração básica do body e html */
-html, body {
-  height: 100%;
-  background-color: rgb(238, 237, 240);
-}
-
-/* Wrapper para utilizar o flexbox */
 .app-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-/* Main deve expandir para preencher o espaço disponível */
-.content-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Estilo básico para o conteúdo principal */
-main {
-  padding: 20px;
 }

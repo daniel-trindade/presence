@@ -7,11 +7,7 @@ function App() {
 
   return (
     <div className="app-wrapper">
-      <div className="content-wrapper">
-        <Container>
-          <Paths/>
-        </Container>
-      </div>
+      <Paths/>
     </div>
   );
 }

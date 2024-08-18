@@ -10,6 +10,7 @@ import Menager from '../Components/pages/Menager';
 import NavBar from '../Components/layout/NavBar';
 import Footer from '../Components/layout/Footer'
 import PersonalInfo from '../Components/pages/PersonalInfo';
+import Container from '../Components/layout/Container';
 
 
 
@@ -33,16 +34,18 @@ function Paths(){
     <>
       <Router>
         <NavBar/>
-        <Routes>
-          <Route exact path='/' element={<Login/>}/>
-          <Route path='*' element={<Login/>}/>
-          <Route exact path='/home' element={<Private Item={Home}/>}/>
-          <Route exact path='/list' element={<Private Item={List}/>}/>
-          <Route exact path='/menager' element={<Private Item={Menager}/>}/>
-          <Route exact path='/reports' element={<Private Item={Reports}/>}/>
-          <Route exact path='/personalinfo' element={<Private Item={PersonalInfo}/>}/>
-          <Route path='/signup' element={<Signup/>}/>
-        </Routes>
+        <Container>
+          <Routes>
+            <Route exact path='/' element={<Login/>}/>
+            <Route path='*' element={<Login/>}/>
+            <Route exact path='/home' element={<Private Item={Home}/>}/>
+            <Route exact path='/list' element={<Private Item={List}/>}/>
+            <Route exact path='/menager' element={<Private Item={Menager}/>}/>
+            <Route exact path='/reports' element={<Private Item={Reports}/>}/>
+            <Route exact path='/personalinfo' element={<Private Item={PersonalInfo}/>}/>
+            <Route path='/signup' element={<Signup/>}/>
+          </Routes>
+        </Container>
         <Footer/>
       </Router>
     </>

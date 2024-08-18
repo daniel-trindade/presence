@@ -1,61 +1,66 @@
 //Styles
-import styles from "./Login.module.css"
+import styles from "./Login.module.css";
 //React hooks
-import { useState } from "react"
-import { FaUser, FaLock } from "react-icons/fa"
+import { useState } from "react";
+import { FaUser, FaLock } from "react-icons/fa";
 
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'; 
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 import { auth } from "../../firebaseConfig";
 
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-function Login(){
+  const [signInWithEmailAndPassword, loading] =
+    useSignInWithEmailAndPassword(auth);
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-
-  const [
-    signInWithEmailAndPassword,
-    loading,
-  ] = useSignInWithEmailAndPassword(auth);
-
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      
-      const { user } = await signInWithEmailAndPassword(email, password)
-      sessionStorage.setItem('firebase_id_token', user.uid);
-      window.location.href = "/home"
+    try {
+      const { user } = await signInWithEmailAndPassword(email, password);
+      sessionStorage.setItem("firebase_id_token", user.uid);
+      window.location.href = "/home";
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    }catch(error){
-      console.error(error)
-    }  
+  if (loading) {
+    return <p>Carregando...</p>;
   }
-
-  if(loading){
-    return <p>Carregando...</p>
-  }
-  return(
+  return (
     <div className={styles.loginContainer}>
       <form onSubmit={handleSubmit} className={styles.loginForm}>
-        <h1>Email <span><FaUser/></span></h1>
-        <input 
-          type="text" 
-          className={styles.loginBox}  
+        <h1>
+          Email{" "}
+          <span>
+            <FaUser />
+          </span>
+        </h1>
+        <input
+          type="text"
+          className={styles.loginBox}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <h1>Senha <span><FaLock/></span></h1>
-        <input 
-          type="password" 
-          className={styles.loginBox} 
+        <h1>
+          Senha{" "}
+          <span>
+            <FaLock />
+          </span>
+        </h1>
+        <input
+          type="password"
+          className={styles.loginBox}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input type="submit" value="Entrar" className={styles.enterButton}/>
-        <p>Não possui Login? <a href="/signup">Registre-se</a></p>
+        <input type="submit" value="Entrar" className={styles.enterButton} />
+        <p>
+          Não possui Login? <a href="/signup">Registre-se</a>
+        </p>
       </form>
-      
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
