@@ -24,7 +24,7 @@ function Home(){
       <Button 
         text="180"
         tag="Frequência Total"
-        link="/home"
+        link="/personalInfo"
       />
     </div>
   )
