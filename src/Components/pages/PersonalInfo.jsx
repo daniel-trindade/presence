@@ -72,6 +72,7 @@ const PersonalInfo = () => {
                     setID(person.id);
                     setNewName(person.name);
                     console.log(newName)
+                    //BOTÃO
                   }}
                 >
                   {person.name}
